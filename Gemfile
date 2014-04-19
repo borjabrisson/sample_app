@@ -2,7 +2,6 @@
 #
 source 'https://rubygems.org'
 ruby '2.0.0' 
-# Add these 2 lines 1
 
 #ruby-gemset=sample_app
 
