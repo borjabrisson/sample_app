@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s) # SHA1 faster than bcrypt
   end
 
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end
+
   private # hidden from everyone except the User model
 
   def create_remember_token # 2
