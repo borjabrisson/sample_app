@@ -13,6 +13,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'carrierwave'
 gem 'mini_magick', '3.5.0'
+gem 'fog', '~> 1.3.1'
+gem 'nokogiri', '~> 1.5.0'
 
 group :development, :test  do
    gem 'sqlite3', '1.3.8'
