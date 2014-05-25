@@ -3,6 +3,17 @@
 
 <div class="row">
   <div class="span6 offset3">
+
+    <%= direct_upload_form_for(@user.picture) do |f| %>
+
+        <%= f.label :picture %><br>
+        <%= f.file_field :picture %>
+
+        <div class="actions">
+          <%= f.submit  %>
+        </div>
+    <% end %>
+
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
@@ -15,10 +26,7 @@
         <%= f.label :password_confirmation, "Confirm Password" %>
         <%= f.password_field :password_confirmation %>
 
-        <div class="field">
-          <%= f.label :picture %><br>
-          <%= f.file_field :picture %>
-        </div>
+        <%= f.hidden_field :key %> <!-- this line added too -->
 
         <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>

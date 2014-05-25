@@ -20,6 +20,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = (params[:key]) ? @user.update_attributes(picture_params) : User.update
+    @edit.picture.success_action_redirect = edit_user_url
+
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
 
   def destroy
     User.find(params[:id]).destroy
@@ -64,7 +68,11 @@ class UsersController < ApplicationController
   private # internal to Users controller
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation, :picture)
+                                 :password_confirmation, :picture,:key)
+  end
+
+  def picture_params # add this private method
+    params.permit(:key)
   end
 
   # Before filters
@@ -77,5 +85,6 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
+
 
 end
