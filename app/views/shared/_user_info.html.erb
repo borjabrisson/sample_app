@@ -1,5 +1,29 @@
-<%= link_to gravatar_for(current_user, size: 52), current_user %>
-<%= image_tag(current_user.picture_url, :width => 400) if current_user.picture.present? %>
+<!--
+< %= link_to gravatar_for(current_user, size: 52), current_user %>
+
+< %= image_tag(current_user.picture_url, :width => 400) if current_user.picture.present? %>
+
+   <td><a href="< %= current_user.picture_url %>">
+  < %= image_tag current_user.picture_url(:thumb) if current_user.picture?  %>
+</a></td>
+
+##########################
+
+<td><a href="< %= current_user.picture_url if current_user.picture? %>">
+  < %= if current_user.picture.present?
+     image_tag current_user.picture_url(:thumb)
+      else
+        link_to gravatar_for(current_user, size: 52), current_user
+      end%>
+</a></td>
+
+   -->
+
+<td>
+  <%= link_to gravatar_for(current_user, size: 52), current_user%>
+</td>
+
+
 <h1>
   <%= current_user.name %>
 </h1>
