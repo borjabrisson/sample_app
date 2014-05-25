@@ -14,10 +14,14 @@
         <%= f.password_field :password %>
         <%= f.label :password_confirmation, "Confirm Password" %>
         <%= f.password_field :password_confirmation %>
+
+        <div class="field">
+          <%= f.label :picture %><br>
+          <%= f.file_field :picture %>
+        </div>
+
         <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
-  </div>
+   </div>
 </div>
